@@ -22,7 +22,7 @@ class CreateLink extends Component {
     render() {
         const { description, url } = this.state
         return (
-            <Mutation mutation={CREATE_LINK_MUTATION} variables={this.state} >
+            <Mutation mutation={CREATE_LINK_MUTATION} variables={this.state} onCompleted={() => this.props.history.push('/')}>
                 {(post, { loading, error, data }) => {
                     if (loading) return <p>Loading...</p>
                     if (error) return <p>Error!</p>
