@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
         "buttonface"
-    ]
+    ],
+    "prettier.singleQuote": true,
+    "prettier.useTabs": true
 }
