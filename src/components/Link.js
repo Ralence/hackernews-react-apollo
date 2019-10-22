@@ -3,6 +3,7 @@ import { AUTH_TOKEN } from '../constants';
 import { timeDifferenceForDate } from '../utils';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import { FEED_QUERY } from './LinkList';
 
 const VOTE_MUTATION = gql`
     mutation VOTE_MUTATION ($linkId: ID!) {
@@ -33,9 +34,11 @@ class Link extends Component {
                     {authToken && (
                         <Mutation
                             mutation={VOTE_MUTATION}
+                            refetchQueries={[{ query: FEED_QUERY }]}
                             variables={{ linkId: this.props.link.id }}
                             update={(store, { data: { vote } }) => this.props.updateStoreAfterVote(store, vote, this.props.link.id)
-                            }>
+                            }
+                        >
                             {(vote, { error }) => {
                                 if (error) alert(`There's been an error!`)
                                 return (
