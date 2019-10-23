@@ -36,8 +36,8 @@ class Link extends Component {
                             mutation={VOTE_MUTATION}
                             refetchQueries={[{ query: FEED_QUERY }]}
                             variables={{ linkId: this.props.link.id }}
-                            update={(store, { data: { vote } }) => this.props.updateStoreAfterVote(store, vote, this.props.link.id)
-                            }
+                        // uncomment the next line for local store update
+                        // update={(store, { data: { vote } }) => this.props.updateStoreAfterVote(store, vote, this.props.link.id)}
                         >
                             {(vote, { error }) => {
                                 if (error) alert(`There's been an error!`)
